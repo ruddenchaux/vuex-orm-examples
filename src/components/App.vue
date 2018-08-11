@@ -14,13 +14,14 @@
 </template>
 
 <script>
-import data from '../data'
+// import data from '../data'
 import store from '../store'
 import AppHeader from './AppHeader'
 import Description from './Description'
 import Users from './Users'
 import Todos from './Todos'
 import AppFooter from './AppFooter'
+import Todo from '../models/Todo'
 
 export default {
   store,
@@ -36,9 +37,11 @@ export default {
   created () {
     // Here we are stubbing the initial data. In the real world, this
     // should be the response from the API Backend.
-    const initialData = data
+    // const initialData = data
 
-    this.$store.dispatch('entities/todos/create', { data: initialData })
+    // this.$store.dispatch('entities/todos/create', { data: initialData })
+
+    Todo.fetch()
   }
 }
 </script>

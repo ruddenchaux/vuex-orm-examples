@@ -19,6 +19,7 @@
 
 <script>
 import Trash from './icons/Trash'
+import User from '../models/User'
 
 export default {
   components: {
@@ -27,17 +28,20 @@ export default {
 
   computed: {
     users () {
-      return this.$store.getters['entities/users/query']().with('todos').orderBy('id', 'desc').get()
+      // return this.$store.getters['entities/users/query']().with('todos').orderBy('id', 'desc').get()
+      return User.query().with('todos').orderBy('id', 'desc').get()
     }
   },
 
   methods: {
     update (id, name) {
-      this.$store.dispatch('entities/users/update', { id, name })
+      // this.$store.dispatch('entities/users/update', { id, name })
+      return User.update(id, { name })
     },
 
     destroy (id) {
-      this.$store.dispatch('entities/users/delete', id)
+      // this.$store.dispatch('entities/users/delete', id)
+      User.deleteById(id)
     }
   }
 }

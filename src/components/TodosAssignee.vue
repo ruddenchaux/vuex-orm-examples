@@ -1,6 +1,6 @@
 <template>
   <div class="TodosAssignee">
-    <User class="user" />
+    <UserIcon class="user" />
 
     <select class="select" :class="{ selected: !!todo.assignee }" @change="update">
       <option class="option" value="">Choose assignee</option>
@@ -20,12 +20,14 @@
 </template>
 
 <script>
-import User from './icons/User'
+import UserIcon from './icons/User'
 import ChevronDown from './icons/ChevronDown'
+import Todo from '../models/Todo'
+import User from '../models/User'
 
 export default {
   components: {
-    User,
+    UserIcon,
     ChevronDown
   },
 
@@ -35,20 +37,23 @@ export default {
 
   computed: {
     users () {
-      return this.$store.getters['entities/users/query']().orderBy('name').get()
+      // return this.$store.getters['entities/users/query']().orderBy('name').get()
+      return User.query().orderBy('name').get()
     },
 
     todo () {
-      return this.$store.getters['entities/todos/query']().with('assignee').find(this.todoId)
+      // return this.$store.getters['entities/todos/query']().with('assignee').find(this.todoId)
+      return Todo.query().with('assignee').find(this.todoId)
     }
   },
 
   methods: {
     update (e) {
-      this.$store.dispatch('entities/todos/update', {
+      /* this.$store.dispatch('entities/todos/update', {
         id: this.todoId,
         user_id: e.target.value
-      })
+      }) */
+      Todo.update(this.todoId, { user_id: e.target.value })
     }
   }
 }

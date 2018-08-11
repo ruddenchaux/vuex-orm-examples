@@ -4,6 +4,12 @@ import User from './User'
 export default class Todo extends Model {
   static entity = 'todos'
 
+  static _conf = {
+    http: {
+      url: 'todo'
+    }
+  }
+
   static fields () {
     return {
       id: this.increment(),

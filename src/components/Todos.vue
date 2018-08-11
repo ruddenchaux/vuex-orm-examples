@@ -13,6 +13,7 @@
 
 <script>
 import TodosList from './TodosList'
+import Todo from '../models/Todo'
 
 export default {
   components: {
@@ -21,9 +22,10 @@ export default {
 
   methods: {
     add () {
-      this.$store.dispatch('entities/todos/insert', {
+      /* this.$store.dispatch('entities/todos/insert', {
         data: { title: '' }
-      })
+      }) */
+      Todo.create({ title: '' })
     }
   }
 }

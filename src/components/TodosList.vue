@@ -25,6 +25,7 @@
 import CheckCircle from './icons/CheckCircle'
 import Trash from './icons/Trash'
 import Assignee from './TodosAssignee'
+import Todo from '../models/Todo'
 
 export default {
   components: {
@@ -35,21 +36,25 @@ export default {
 
   computed: {
     todos () {
-      return this.$store.getters['entities/todos/query']().orderBy('id', 'desc').get()
+      // return this.$store.getters['entities/todos/query']().orderBy('id', 'desc').get()
+      return Todo.query().orderBy('id', 'desc').get()
     }
   },
 
   methods: {
     toggle (todo) {
-      this.$store.dispatch('entities/todos/update', { id: todo.id, done: !todo.done })
+      // this.$store.dispatch('entities/todos/update', { id: todo.id, done: !todo.done })
+      return Todo.update(todo.id, { done: !todo.done })
     },
 
     update (id, title) {
-      this.$store.dispatch('entities/todos/update', { id, title })
+      // this.$store.dispatch('entities/todos/update', { id, title })
+      return Todo.update(id, { title })
     },
 
     destroy (id) {
-      this.$store.dispatch('entities/todos/delete', id)
+      // this.$store.dispatch('entities/todos/delete', id)
+      Todo.deleteById(id)
     }
   }
 }

@@ -10,14 +10,15 @@
     "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/eslint-config-standard": "^3.0.0-rc.3",
-    "@vuex-orm/core": "^0.25.5",
+    "@vuex-orm/core": "file:../vuex-orm",
     "normalize.css": "^8.0.0",
     "postcss-css-variables": "^0.9.0",
     "postcss-import": "^11.1.0",
     "postcss-nested": "^3.0.0",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "webpack-api-mocker": "^1.5.9"
   },
   "browserslist": [
     "> 1%",
